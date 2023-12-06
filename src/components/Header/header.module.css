@@ -1,0 +1,28 @@
+
+.header{
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+
+.headerLogo{
+    margin-left: 20px;
+    color:blue;
+    font-size: 32px;
+    font-weight: 700;
+}
+.headerNav{
+    margin-left: 20px;
+    /* margin: 0 auto; */
+    display: flex;
+    gap: 20px;
+    
+}
+
+ .active{
+    color: yellow;
+    font-weight: bold;
+}
+  
