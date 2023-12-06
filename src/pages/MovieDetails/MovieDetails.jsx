@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import css from './MovieDetails.module.css'
 import { useLocation } from 'react-router-dom';
 import { useRef } from 'react';
-
+// import NotFound from '../NotFound/NotFound'
 
 
 const MovieDetails = () => {
@@ -43,7 +43,9 @@ const MovieDetails = () => {
     return (
       <div>
         <div>
-          <NavLink className={css.goBack} to={backLinkHref.current}>Go back</NavLink>
+          <NavLink className={css.goBack} to={backLinkHref.current}>
+            Go back
+          </NavLink>
         </div>
         <ToastContainer />
         {movieDetails ? (
@@ -93,6 +95,7 @@ const MovieDetails = () => {
           </div>
         ) : (
           'Loading....'
+          // <NotFound />
         )}
       </div>
     );

@@ -12,14 +12,14 @@ const options = {
 
 
 
-// export const getTrendMovies = () => {
-//   return axios.get(`${ BASE_URL }/trending/all/day?language=en-US`, options);
-  
-// }
-
 export const getTrendMovies = () => {
-  return axios.get(`${BASE_URL}/movie/popular`, options);
-};
+  return axios.get(`${ BASE_URL }/trending/all/day?language=en-US`, options);
+  
+}
+
+// export const getTrendMovies = () => {
+//   return axios.get(`${BASE_URL}/movie/popular`, options);
+// };
 
 
 export const getMovieById = movieId => {

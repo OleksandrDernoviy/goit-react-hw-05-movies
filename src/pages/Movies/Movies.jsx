@@ -9,31 +9,28 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NavLink } from 'react-router-dom';
 
+
 const Movies = () => {
   const [savedMovies, setSavedMovies] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams()
-  const query = searchParams.get('query')
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query');
   const location = useLocation();
-  // console.log('location', location);  
-   
+  // console.log('location', location);
 
   useEffect(() => {
-     
     if (query) {
-      getMovieByQuery(query)
-        .then(response => {
-          setSavedMovies(response.data.results);
-        })
-        // .catch(error => {
-        //   console.error('Помилка при отриманні фільмів', error)
-        //   toast.error('Помилка запиту')
-        // })
+      getMovieByQuery(query).then(response => {
+        setSavedMovies(response.data.results);
+      });
+      // .catch(error => {
+      //   console.error('Помилка при отриманні фільмів', error)
+      //   toast.error('Помилка запиту')
+      // })
     }
-    }, [query])
+  }, [query]);
 
-
-const onSubmit = inputQuery => {
-  setSearchParams({query: inputQuery });
+  const onSubmit = inputQuery => {
+    setSearchParams({ query: inputQuery });
 
     getMovieByQuery(inputQuery)
       .then(response => {
@@ -44,9 +41,9 @@ const onSubmit = inputQuery => {
         toast.error('Помилка запиту');
       });
   };
-const defaultImg =
+  const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
-  
+
   return (
     <div>
       <SearchBar submit={onSubmit} />
@@ -73,8 +70,7 @@ const defaultImg =
       </ul>
     </div>
   );
-
-                }                
+};                
 export default Movies;
 
 
