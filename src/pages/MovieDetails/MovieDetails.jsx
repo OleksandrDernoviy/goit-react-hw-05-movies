@@ -1,4 +1,5 @@
 
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieById } from '../../api/ApiMovies';
@@ -6,33 +7,34 @@ import { Outlet } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { NavLink } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import css from './MovieDetails.module.css'
+import css from './MovieDetails.module.css';
 import { useLocation } from 'react-router-dom';
 import { useRef } from 'react';
-// import NotFound from '../NotFound/NotFound'
-
+import NotFoundImg from '../NotFound/NotFoundImg';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const location = useLocation(); 
+  const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
+  const [errorImg, setErrorImg] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await getMovieById(movieId);
         setMovieDetails(response.data);
-        // console.log(response.data);
       } catch (error) {
         toast.error('Помилка запиту');
-        console.error(error);
+        setErrorImg(true);
       }
     };
 
     fetchData();
   }, [movieId]);
-  const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   const navStyleMDetails = ({ isActive }) => `${isActive ? css.active : ''}`;
   let genres = '';
 
@@ -40,16 +42,18 @@ const MovieDetails = () => {
     genres = movieDetails.genres.map(genre => genre.name).join(', ');
   }
 
-    return (
+  return (
+    <div>
       <div>
+        <NavLink className={css.goBack} to={backLinkHref.current}>
+          Go back
+        </NavLink>
+      </div>
+      <ToastContainer />
+      {errorImg ? (
+        <NotFoundImg />
+      ) : movieDetails ? (
         <div>
-          <NavLink className={css.goBack} to={backLinkHref.current}>
-            Go back
-          </NavLink>
-        </div>
-        <ToastContainer />
-        {movieDetails ? (
-          <div>
             <div className={css.movieBox}>
               <div>
                 <img
@@ -93,13 +97,14 @@ const MovieDetails = () => {
             </div>
             <Outlet />
           </div>
-        ) : (
-          'Loading....'
-          // <NotFound />
-        )}
-      </div>
-    );
-  
+      ) : (
+        'Loading....'
+      )}
+    </div>
+  );
+};
+
+export default MovieDetails;
 
 
 
@@ -125,11 +130,9 @@ const MovieDetails = () => {
 
 
 
+//     };
 
-
-    };
-
-  export default MovieDetails;
+//   export default MovieDetails;
 
 
   

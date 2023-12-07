@@ -21,13 +21,14 @@ const Home = () => {
         setTrendMovies(response.data.results);
         // console.log(response.data);        
       } catch (error) {
-        toast.error('Помилка запиту');
+       
+        toast.error('Помилка запиту !')
       }
     };
 
     fetchData();
   }, []);
-
+   
   return (
     <div>
       <ToastContainer />
