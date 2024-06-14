@@ -27,8 +27,10 @@ const Cast = () => {
   }, [movieId]);
 
 
-    const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
-    
+    // const defaultImg = 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+  const defaultImg =
+    'https://images.pexels.com/photos/6373499/pexels-photo-6373499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+ 
     return (
       <ul className={css.castList}>
         <ToastContainer />

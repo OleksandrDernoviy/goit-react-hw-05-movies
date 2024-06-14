@@ -33,8 +33,8 @@ const MovieDetails = () => {
     fetchData();
   }, [movieId]);
 
-  const defaultImg =
-    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+ const defaultImg =
+   'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg';
   const navStyleMDetails = ({ isActive }) => `${isActive ? css.active : ''}`;
   let genres = '';
 
@@ -130,9 +130,6 @@ export default MovieDetails;
 
 
 
-//     };
-
-//   export default MovieDetails;
 
 
   

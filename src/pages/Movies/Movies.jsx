@@ -41,9 +41,9 @@ const Movies = () => {
         toast.error('Помилка запиту');
       });
   };
-  const defaultImg =
-    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
-
+  
+const defaultImg =
+  'https://images.pexels.com/photos/3600078/pexels-photo-3600078.jpeg';
   return (
     <div>
       <SearchBar submit={onSubmit} />
